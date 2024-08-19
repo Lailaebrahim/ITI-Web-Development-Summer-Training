@@ -1,5 +1,3 @@
-# ITI-Web-Development-Summer-Training
-
 # Crowd-Funding console app
 
 Crowdfunding is the practice of funding a project or venture by raising small
