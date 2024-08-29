@@ -1,0 +1,18 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}  <!-- Add this line to load the static template tag library -->
+{% block title %}
+    <title>Contact</title>
+{% endblock title %}
+{% block content %}
+<div class="container">
+  <h1> SEND US A MESSAGE</h1>
+  <form>
+    <input type="text" id="fullname" name="fullname" placeholder="Your name..">
+    <input type="email" id="email" name="email" placeholder="Your email..">
+    <input type="phone" id="phone" name="phone" placeholder="Your Phone..">
+    <input type="/textarea" style="height: 200px;" id="msg" name="msg" placeholder="Your Message..">
+    <input type="submit"  style="width: 100px;" value="&#10147 Submit">
+  </form>
+  </div>
+
+{% endblock content%}

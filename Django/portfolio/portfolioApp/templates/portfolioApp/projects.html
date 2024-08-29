@@ -1,0 +1,27 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+{% block content %}
+
+{% for project in projects%}
+<div class="main-container project">
+  <div class="container-left">
+        <h1 class="project-title">{{project.title}}: </h1> <br>
+        <h3 class="project-description">Description: </h3>
+        <p>{{project.description}}</p><br>
+        <a class="project-link" href={{project.github_link}}> GitHub Link</a><br><br>
+        <h3>Contributors:</h3>
+        {% for contributor in project.contributers.all %}
+            <div class="contributor">
+            <p><a href="{% url "contributor" contributor.id%}">{{ contributor.name }}</a> - {{ contributor.contribution }}</p>
+            </div>
+        {% endfor %}
+  </div>
+  <div class="container-right">
+    <img class="project-img" src="{{project.image}}" alt="img">
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

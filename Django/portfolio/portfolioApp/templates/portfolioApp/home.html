@@ -1,0 +1,20 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Projects</title>
+{% endblock title %}
+{% block content %}
+<div class="main-container">
+  <div class="container-left">
+        <h1>Hi, I'm {{dev.name}}</h1> <br>
+        <p>I am a {{dev.position}}.<br> With +{{dev.years}} of expreince.</p><br>
+        <p>{{dev.bio}}</p><br>
+        <div class="contact">
+            <a href="{% url 'contact' %}">&#9993; Contact Me</a>
+        </div>
+  </div>
+  <div class="container-right">
+    <img src="{% static "css/me.jpg" %}">
+  </div>
+</div>
+{%endblock content%}

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %}
+    {% endblock title %}
+    <link rel='stylesheet' href='{% static "css/main.css" %}'>
+</head>
+<body>
+   {% include "portfolioApp/partials/navbar.html" %}
+
+   <main>
+        {% block content %}
+        {% endblock content %}
+   </main>
+   
+    {% include "portfolioApp/partials/footer.html" %}
+</body>
+</html>
