@@ -1,0 +1,19 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Update Project</title>
+{% endblock title %}
+{% block content %}
+
+<div class="container project">
+    <div class="up">
+        <h1 style="display:inline-block; text-align: left; margin-top:15px; font-size:24px; font-weight:bold; color:#000; border-bottom:2px solid #000; padding-bottom:5px; text-shadow: 0 1px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1);">Create a New Project</h1>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form}}
+    <br><button class="button-50" role="button" type="submit">Update</button>
+    </form>
+</div>
+
+{% endblock content %}

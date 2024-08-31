@@ -64,20 +64,21 @@ footer {
 
 
 main .container {
-    margin: auto;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.container form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px;
 }
 
-.container form input {
+form input {
     margin: 10px;
     padding: 10px;
     width: 600px;
@@ -86,12 +87,30 @@ main .container {
     border-radius: 50px;
 }
 
-.container form input::placeholder {
+form select {
+    margin: 10px;
+    padding: 10px;
+    width: 600px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+form select:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+form input::placeholder {
     font-size: 16px;
     text-align: start;
 }
 
-.container form input[type="submit"] {
+form input[type="submit"] {
     margin: 10px;
     padding: 10px;
     width: 250px;
@@ -131,28 +150,21 @@ main .container {
 .container-right img {
     width: 300px;
     height: 300px;
-    border-radius: 150px;
-    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
 }
 
-.container-right .project-img{
-    width: 400px;
-    height: 400px;
+.container-right .project-img {
+    width: 500px;
+    height: 270px;
 }
 
-.project{
+.project {
     margin: 40px;
     border-radius: 50px;
-    box-shadow:  10px 10px 10px 10px #c49600;
+    box-shadow: 10px 10px 10px 10px #c49600;
     background-color: #f9e800;
-}
-
-
-.container-right .project-description{
-    font-size: 2rem;
-    font-weight: 400;
-    text-decoration: underline;
-    color: #000;
 }
 
 .container-left .contact {
@@ -222,4 +234,71 @@ main .container {
 .django {
     width: 50%;
     background-color: #092e20;
+}
+
+.up {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-50 {
+    appearance: button;
+    background-color: #000;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: rgb(192, 191, 131) 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: rgb(255, 253, 151);
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    overflow: visible;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 3px 15px;
+}
+
+.button-50:focus {
+    text-decoration: none;
+}
+
+.button-50:hover {
+    text-decoration: none;
+}
+
+.button-50:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+}
+
+.button-50:not([disabled]):active {
+    box-shadow: rgb(192, 191, 131) 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+}
+
+.up {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.up h1 {
+    display: inline-block;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
 }

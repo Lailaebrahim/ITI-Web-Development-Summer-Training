@@ -4,13 +4,18 @@
     <title>Contributor</title>
 {% endblock title %}
 {% block content %}
-    <div class="main-container">
+    <div class="main-container project">
     <div class="container-left">
             <h1>Hi, I'm {{contributor.name}}</h1> <br>
             <p>I am a {{contributor.contribution}}.<br>
             <p>{{contributor.email}}</p><br>
             <a href={{contributor.github_link}}> GitHub Link</a><br>
             <a href={{contributor.linkedin_link}}> LinkedIn Link</a><br>
+            <br>
+            <div style="display: flex; justify-content: space-between;">
+                <a href="{% url 'deleteContributer' contributor.id %}"><button class="button-50" role="button" style="background-color:red;">Delete</button></a>
+                <a href="{% url 'updateContributer'  contributor.id %}"><button class="button-50" role="button" style="background-color:black;">Update</button></a>
+            </div>
     </div>
     <div class="container-right">
         <img src="{{contributor.image.url}}">
