@@ -5,7 +5,8 @@ from PIL import Image
 
 class PortfolioUser(models.Model):
     # extend User Model in djnago using one to one relationship
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='portfolio_user')
     image = models.ImageField(
         upload_to='images/profile/', default='images/profile/default.png')
     bio = models.TextField(max_length=300, null=True)

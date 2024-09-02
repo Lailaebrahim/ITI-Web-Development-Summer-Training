@@ -1,19 +1,18 @@
 {% extends "portfolioApp/base.html" %}
 {% load static %}
 {% block title %}
-    <title>Login</title>
+    <title>SignUp</title>
 {% endblock title %}
 {% block content %}
 
 <div class="container project">
     <div class="up">
-        <h1>Log In</h1>
+        <h1>Sign Up</h1>
     </div>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
         {{form}}
-    <br><button class="button-50" role="button" type="submit">LogIn</button><br>
-    <p> Don't Have An Account Signup <a href="{% url 'signup'%}">   Here!</a></p>
+    <br><button class="button-50" role="button" type="submit">SignUp</button>
     </form>
 </div>
 

@@ -5,6 +5,8 @@ from PIL import Image
 
 class Technology(models.Model):
     technology = models.CharField(max_length=50, unique=True)
+    portfolio_user = models.ForeignKey(
+        PortfolioUser, on_delete=models.CASCADE, related_name='technologies')
 
     def __str__(self) -> str:
         return str(self.technology)
@@ -12,7 +14,6 @@ class Technology(models.Model):
 
 class Contributer(models.Model):
     name = models.CharField(max_length=30)
-    contribution = models.CharField(max_length=300)
     image = models.ImageField(
         upload_to='images/contributer/', default='images/contributer/default.png')
     email = models.EmailField(max_length=254, default=None)
@@ -42,7 +43,6 @@ class Project(models.Model):
         upload_to='images/projects/', default='images/default.png')
     github_link = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
-    contributers = models.ManyToManyField(Contributer)
     portfolio_user = models.ForeignKey(
         PortfolioUser, on_delete=models.CASCADE, related_name='projects')
     technologies = models.ManyToManyField(Technology)
@@ -62,11 +62,31 @@ class Project(models.Model):
 
 
 class ContributerTechnology(models.Model):
-    contributer = models.ForeignKey(Contributer, on_delete=models.CASCADE)
-    technology = models.ForeignKey(Technology, on_delete=models.CASCADE)
+    contributer = models.ForeignKey(Contributer, on_delete=models.CASCADE, related_name='contributer_technologies')
+    technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name='technology_contributers')
     LEVEL_CHOICES = [
         ('beginner', 'Beginner'),
         ('intermediate', 'Intermediate'),
         ('advanced', 'Advanced'),
     ]
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES)
+
+    class Meta:
+        unique_together = ('contributer', 'technology')
+
+
+class ContributorProjectContribution(models.Model):
+    contributor = models.ForeignKey(
+        Contributer,
+        on_delete=models.CASCADE,
+        related_name='project_contributions'
+    )
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        related_name='contributor_contributions'
+    )
+    contribution = models.TextField(null=False)
+
+    class Meta:
+        unique_together = ('contributor', 'project')

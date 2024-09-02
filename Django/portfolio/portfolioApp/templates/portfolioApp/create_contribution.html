@@ -1,0 +1,23 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}
+{% block title %}
+    <title>New Contributor</title>
+{% endblock title %}
+{% block content %}
+
+<div class="container project">
+    <div class="up">
+        <h1>Add Contribution</h1>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form}}
+    <br><h3 style="display: inline;"> Want to Add A new Contributer ?</h3>
+    <a href="{% url 'createContributer'%}">
+        <button class="button-50" role="button" type="button">Create Contributer</button>
+    </a>
+    <br><button class="button-50" role="button" type="submit">Add</button>
+    </form>
+</div>
+
+{% endblock content %}

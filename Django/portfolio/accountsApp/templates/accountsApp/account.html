@@ -1,0 +1,53 @@
+{% extends "portfolioApp/base.html" %}
+{% load static %}
+{% block title %}
+    <title>Your Account</title>
+{% endblock title %}
+{% block content %}
+<div class="main-container project">
+  <div class="container-left">
+        <h1 class="uph1">Your Account Information: </h1><br>
+        <h3>Username: </h3>
+        <p>{{portfoliouser.user.username}}</p><br>
+        <h3>First Name: </h3>
+        <p>{{portfoliouser.user.first_name}}</p><br>
+        <h3>Last Name: </h3>
+        <p>{{portfoliouser.user.last_name}}</p><br>
+        <h3>Job Title:</h3>
+        <p>{{portfoliouser.jobTitle}}</p><br>
+        <h3> Bio: </h3>
+        <p>{{portfoliouser.bio}}</p><br>
+        <h3>Email: </h3>
+        <p>{{portfoliouser.user.email}}</p><br>
+        <h3> GitHub Account: </h3>
+        <a class="project-link" href={{portfoliouser.github_link}}> GitHub Link</a><br>
+        <br><a href="{% url 'userprojects'%}"><h3>Projects You Created:</h3></a>
+        {% for project in portfoliouser.projects.all %}
+          <div>
+            <p><a href="{% url "project" project.id%}">{{ project.title }}</a></p>
+            </div>
+        {% endfor %}
+        <br><a href="{% url 'usercontributers'%}"><h3>Contributors You Created:</h3></a>
+        {% for contributer in portfoliouser.contributers.all %}
+            <div>
+                <p>
+                    <a href="{% url "contributor" contributer.id%}">{{ contributer.name }}</a>
+                </p>
+            </div>
+        {% endfor %}
+        <br><a href="{% url 'usertechnologies'%}"><h3> Technologies You Created:</h3></a>
+        {% for technology in portfoliouser.technologies.all %}
+            <div>
+                <p>{{ technology.technology }}</p>
+            </div>
+        {% endfor %}
+        <br><div style="display: flex; justify-content: space-between;">
+          <a href="{% url 'account_delete' %}"><button class="button-50" role="button" style="background-color:red;">Delete</button></a>
+          <a href="{% url 'accountUpdate' %}"><button class="button-50" role="button" style="background-color:black;">Update</button></a>
+        </div>
+      </div>
+  <div class="container-right">
+    <img src="{{portfoliouser.image.url}}" alt="img" style="border-radius: 0px;">
+  </div>
+</div>
+{%endblock content%}

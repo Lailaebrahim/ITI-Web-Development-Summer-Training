@@ -30,9 +30,7 @@ nav li {
     margin-right: 20px;
 }
 
-nav li:last-child {
-    margin-right: 0;
-}
+
 
 nav li a {
     color: rgb(255, 253, 151);
@@ -52,6 +50,34 @@ main {
     background-color: #fff56b;
     color: rgb(0, 0, 0);
     padding-inline: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.up {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.up h1,
+.uph1 {
+    display: flex;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.up a {
+    margin-top: 20px;
+    margin-left: 700px;
 }
 
 footer {
@@ -126,7 +152,7 @@ form input[type="submit"] {
 
 .main-container {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     min-height: 400px;
 }
 
@@ -165,6 +191,8 @@ form input[type="submit"] {
     border-radius: 50px;
     box-shadow: 10px 10px 10px 10px #c49600;
     background-color: #f9e800;
+    max-width: 1000px;
+    max-height: auto;
 }
 
 .container-left .contact {
@@ -236,11 +264,6 @@ form input[type="submit"] {
     background-color: #092e20;
 }
 
-.up {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
 
 .button-50 {
     appearance: button;
@@ -285,20 +308,6 @@ form input[type="submit"] {
     transform: translate(2px, 2px);
 }
 
-.up {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.up h1 {
-    display: inline-block;
-    text-align: left;
-    margin-top: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-    border-bottom: 2px solid #000;
-    padding-bottom: 5px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+.helptext {
+    display: none;
 }

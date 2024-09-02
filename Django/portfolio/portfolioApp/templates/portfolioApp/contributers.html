@@ -5,22 +5,32 @@
 {% endblock title %}
 {% block content %}
 <div class="up">
-  <h1 style="display:inline-block; text-align: left; margin-top:15px; font-size:24px; font-weight:bold; color:#000; border-bottom:2px solid #000; padding-bottom:5px; text-shadow: 0 1px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1);">All Contributors</h1>
-  <a href="{% url 'createContributer' %}"><button class="button-50" role="button">Create Contributor</button></a>
+  <h1>All Contributors</h1>
 </div>
 {% for contributor in contributers%}
 <div class="main-container project">
     <div class="container-left">
-            <h1>Hi, I'm {{contributor.name}}</h1> <br>
-            <p>I am a {{contributor.contribution}}.<br>
-            <p>{{contributor.email}}</p><br>
-            <a href={{contributor.github_link}}> GitHub Link</a><br>
-            <a href={{contributor.linkedin_link}}> LinkedIn Link</a><br>
+            <h1 class="uph1">{{contributor.name}}</h1> <br>
+            <h3>Technology Stack:</h3>
+            {% for technology in contributor.technologies%}
+                <p>{{technology.technology}}: {{technology.level}}</p>
+            {% endfor %}
+            <br><h3>Previous contributions:</h3>
+            {% for contribution in contributor.contributions %}
+                <p> <a href="{% url 'project' contribution.project.id%}">{{contribution.project.title}}</a>: {{contribution.contribution}}</p>
+            {% endfor %}<br>
+            <br><h3> My Contacts:</h3>
+            <p>Email :{{contributor.email}}</p>
+            <p>GitHub :<a href={{contributor.github_link}}> GitHub Link</a></p>
+            <p>LinkedIn: <a href={{contributor.linkedin_link}}> LinkedIn Link</a></p>
             <br>
+            {% if contributor.portfolio_user == user.portfolio_user%}
             <div style="display: flex; justify-content: space-between;">
                 <a href="{% url 'deleteContributer' contributor.id %}"><button class="button-50" role="button" style="background-color:red;">Delete</button></a>
                 <a href="{% url 'updateContributer'  contributor.id %}"><button class="button-50" role="button" style="background-color:black;">Update</button></a>
+                <a href="{% url 'addContributerTechnology'  contributor.id %}"><button class="button-50" role="button" style="background-color:black;">Add Technology</button></a>
             </div>
+            {% endif %}
     </div>
     <div class="container-right">
         <img src="{{contributor.image.url}}">
