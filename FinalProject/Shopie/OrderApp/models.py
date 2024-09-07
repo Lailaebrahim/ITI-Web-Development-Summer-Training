@@ -1,5 +1,6 @@
 from django.db import models
 from ProductApp.models import Product, Category
+from UserApp.models import ShopieUser
 
 class Order(models.Model):
     STATE_CHOICES = [
@@ -16,6 +17,7 @@ class Order(models.Model):
         ('Mansoura', 'Mansoura')
     ]
     delivery_destination = models.CharField(max_length=100, choices=GOVERNORATE_CHOICES)
+    user = models.ForeignKey(ShopieUser, on_delete=models.CASCADE, related_name='orders')
 
 class OrderProducts(models.Model):
     order = models.ForeignKey('Order', on_delete=models.CASCADE)

@@ -4,13 +4,23 @@
             <div>
                 <ul id="navbar">
                     <li><a class="active" href="{% url "home" %}">Home</a></li>
-                    <li><a href=#>Shop</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Categories</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">SignUp</a></li>
-                    <li><a href="#">LogIn</a></li>
-                    <li><a href="#">LogOut</a></li>
+                    {% if user.is_authenticated%}
+                    <li>
+                    <form action="{% url 'logout'%}" method="post">
+                        {% csrf_token %}
+                        <button class="logout-button" type="submit">Log out</button>
+                    </form>
+                    </li>
+                    <li><a href="{% url 'userAccount' user.id %}"><i class="fa-solid fa-user"></i></a>
                     <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a><li>
+                    {%else%}
+                    <li><a href="{% url 'signup'%}">Sign up</a></li>
+                    <li><a href="{% url 'login' %}">Log in</a></li>
+                    {%endif%}
                 </ul>
             </div>
         </section>

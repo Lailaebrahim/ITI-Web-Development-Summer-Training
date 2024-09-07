@@ -1,0 +1,17 @@
+{% extends 'UserApp/base.html'%}
+{% load static%}
+{% block hero %}
+    <section id="hero-home">
+        <div class="login-box">
+            <form  class="login-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Log In</h2>
+                {{form}}
+                <div class="login-button">
+                    <button class="button-50" role="button" type="submit">Login</button>
+                </div>
+            </form>
+            <p style="color:white; font-wight:600; text-align:center;">Don't have an account ? Sign Up <a href="{% url 'signup'%}"> Here !</a></p>
+        </div>
+    </section>
+{% endblock %} 

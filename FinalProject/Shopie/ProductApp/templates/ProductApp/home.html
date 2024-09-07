@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
     <section id="products" class="section-p1">
-            <h2>Our Featured Products</h2>
+            <h2>Our Most Recent Products</h2>
             <p>All You Need For Your Summer Plans</p>
             <div class="product-container">
                 {% for product in products %}
@@ -23,7 +23,11 @@
                         <h4>{{product.price}}$</h4>
                         <p>{{product.description}}</p>
                         {% if product.quantityInStock > 0 %}
-                        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {% if user.is_authenticated %}
+                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {%else%}
+                            <a href="{% url 'login' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {%endif%}
                         {% else %}
                         <h4 style="color:red;">Out Of Stock</h4>
                         {% endif %}

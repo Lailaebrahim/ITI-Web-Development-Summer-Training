@@ -1,0 +1,18 @@
+{% extends 'UserApp/base.html'%}
+{% load static%}
+{% block content%}
+<section id="user-account">
+    <div class="box">
+        <h3>Delete Your Account</h3>
+        <p style="color:rgb(197, 0, 0); font-size:20px; font-weight:700px;"> 
+            <strong>Are you sure you want to delete your account?</strong>
+        </p>
+        <form class="login-form signup-form" method="post">
+            {% csrf_token %}
+            <div class="signup-button">
+                <button class="button-50" role="button" type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'UserApp/base.html'%}
+{% load static%}
+{% block content%}
+<section id="user-account">
+    <div class="user-account-box">
+        <div class="left-box">
+            <img src="{{shopieuser.image.url}}" alt="Your Profile Picture">
+        </div>
+        <div class="right-box">
+            <div class="user-account-info">
+                <div class="user-info">
+                    <h3>Username:</h3>
+                    <p>{{shopieuser.user.username}}</p>
+                    <h3>Last Name:</h3>
+                    <p>{{shopieuser.user.last_name}}</p>
+                    <h3>Email:</h3>
+                    <p>{{shopieuser.user.email}}</p>
+                    <h3>Phone Number:</h3>
+                    <p>{{shopieuser.phone}}</p>
+                    <h3>Joined At:</h3>
+                    <p>{{shopieuser.join_date}}</p>
+                </div>
+                <div class="user-buttons">
+                    <a href="{% url 'userUpdate' shopieuser.id%}" class="button-50" style="margin:0; text-decoration:none;">Edit</a>
+                    <a href="{% url 'deleteUser' shopieuser.user.id%}" class="button-50" style="margin:0; text-decoration:none;">Delete</a>
+                </div>
+            </div>
+            <div class="user-orders">
+               <h3>Your Previous Orders:</h3>
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in shopieuser.orders.all %}
+                        <tr class="order">
+                            <td>{{ order.id }}</td>
+                            <td>
+                                <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+                                <p><strong>Order Status:</strong> {{ order.state }}</p>
+                                <p><strong>Order Delivery Destination:</strong> {{ order.delivery_destination }}</p>
+                                <a href="" >Details....</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
