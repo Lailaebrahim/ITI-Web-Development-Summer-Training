@@ -1,0 +1,35 @@
+{% extends "UserApp/base.html" %}
+{% load static%}
+{% block hero %}
+    <section id="hero-home">
+        <h4>Enjoy The Summer Offers</h4>
+        <h2>Super Value Deals</h2>
+        <h1>On Summer Collection ... </h1>
+        <p>Save more with promocodes & up to 70% off !</p>
+        <button class="button-50" role="button">Shop Now</button>
+    </section>
+{% endblock %}
+{% block content %}
+    <section id="products" class="section-p1">
+            <h2>Our Featured Products</h2>
+            <p>All You Need For Your Summer Plans</p>
+            <div class="product-container">
+                {% for product in products %}
+                <div class="product">
+                    <img src="{{product.image.url}}" alt="product">
+                    <div class="product-description">
+                        <span>{{product.category}}</span>
+                        <h3>{{product.name}}</h3>
+                        <h4>{{product.price}}$</h4>
+                        <p>{{product.description}}</p>
+                        {% if product.quantityInStock > 0 %}
+                        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                        {% else %}
+                        <h4 style="color:red;">Out Of Stock</h4>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+{% endblock %}
