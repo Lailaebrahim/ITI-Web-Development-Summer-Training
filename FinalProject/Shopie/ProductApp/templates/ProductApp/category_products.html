@@ -9,8 +9,13 @@
 {% endblock %}
 {% block content %}
     <section id="products" class="section-p1">
-            <h2>Our Products</h2>
-            <p>Made Specially for you to take care of you</p>
+        {% for category,products in category_products.items%}
+            <h2>{{category}}</h2>
+            <p>for more items ...... 
+                <a href="{% url 'category'%}?category={{category.id}}">
+                <i stye="font-size: 20px;color: #222;cursor: pointer;margin: 0 10px;"class="fa-solid fa-angles-right"></i>
+                </a>
+            </p>
             <div class="product-container">
                 {% for product in products %}
                 <a style="text-decoration: none; color:#222;" href="{% url 'product' product.id%}">
@@ -35,15 +40,16 @@
                 </a>
                 {% endfor %}
             </div>
-            {% if products.has_other_pages%}
-            <div class="paginate">
-                {% if products.has_previous%}
-                <a href="?page={{products.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
-                {%endif%}
-                {% if products.has_next%}
-                <a href="?page={{products.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
-                {%endif%}
-            </div>
+            {% endfor %}
+            {% if categories_page.has_other_pages%}
+                <div class="paginate">
+                    {% if categories_page.has_previous%}
+                    <a href="?page={{categories_page.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
+                    {%endif%}
+                    {% if categories_page.has_next%}
+                    <a href="?page={{categories_page.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
+                    {%endif%}
+                </div>
             {%endif%}
         </section>
 {% endblock %}

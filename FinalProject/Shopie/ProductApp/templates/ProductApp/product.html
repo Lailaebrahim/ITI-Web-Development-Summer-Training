@@ -1,0 +1,36 @@
+{% extends "UserApp/base.html" %}
+{% load static%}
+{% block hero %}
+    <section id="hero-Products">
+        <h4>Enjoy The Summer Offers</h4>
+        <h1>All You Need & more ..... </h1>
+        <p>Save more with promocodes & up to 70% off !</p>
+    </section>
+{% endblock %}
+{% block content %}
+    <section id="products" class="section-p1">
+            <div class="product-container" >
+                <div class="product" style="width: 50%;">
+                    <img  style="height:auto; max-height:600px;" src="{{product.image.url}}" alt="product">
+                </div>
+                <div class="product" style="width: 40%;">
+                     <div class="product-description">
+                        <h2 style="font-size=10px; border-bottom: 3px solid black;">{{product.name}}</h2>
+                        <br>
+                        <h3>Category:</h3><h4 style="color:#222;">{{product.category}}</h4><br><br>
+                        <h3>Price:</h3><h4>{{product.price}}$</h4><br><br>
+                        <h3>Description:</h3><h4 style="color:#222;">{{product.description}}</h4>
+                        {% if product.quantityInStock > 0 %}
+                            {% if user.is_authenticated %}
+                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {%else%}
+                            <a href="{% url 'login' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                            {%endif%}
+                        {% else %}
+                        <h4 style="color:red;">Out Of Stock</h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

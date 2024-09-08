@@ -15,6 +15,7 @@
             <p>All You Need For Your Summer Plans</p>
             <div class="product-container">
                 {% for product in products %}
+                <a style="text-decoration: none; color:#222;" href="{% url 'product' product.id%}">
                 <div class="product">
                     <img src="{{product.image.url}}" alt="product">
                     <div class="product-description">
@@ -33,6 +34,7 @@
                         {% endif %}
                     </div>
                 </div>
+                </a>
                 {% endfor %}
             </div>
         </section>

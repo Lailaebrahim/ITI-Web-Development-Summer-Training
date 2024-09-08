@@ -131,6 +131,21 @@ body {
     color: #666666;
 }
 
+#hero-Products{
+    padding: 0px 80px;
+    background-image: url('imgs/hero.jpg');
+    height: 80vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 60% right 0%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.125);
+}
+
 /* CSS */
 .button-50 {
     appearance: button;
@@ -316,6 +331,19 @@ footer .copyrights p {
 
 footer .social-icons .a {
     margin-right: 30px;
+}
+
+.paginate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.paginate i{
+    font-size: 20px;
+    color: #222;
+    cursor: pointer;
+    margin: 0 10px;
 }
 
 .login-box {

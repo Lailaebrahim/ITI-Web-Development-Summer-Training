@@ -3,11 +3,9 @@
             <a><img src='{% static "css/imgs/logo_transparent.png" %}' class="logo"></a>
             <div>
                 <ul id="navbar">
-                    <li><a class="active" href="{% url "home" %}">Home</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">Categories</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a  href="{% url "home" %}">Home</a></li>
+                    <li><a href="{% url 'products'%}">Products</a></li>
+                    <li><a href="{% url 'category_products' %}">Categories</a></li>
                     {% if user.is_authenticated%}
                     <li>
                     <form action="{% url 'logout'%}" method="post">

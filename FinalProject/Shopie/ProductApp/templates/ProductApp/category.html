@@ -9,10 +9,10 @@
 {% endblock %}
 {% block content %}
     <section id="products" class="section-p1">
-            <h2>Our Products</h2>
+            <h2>{{category.category}}</h2>
             <p>Made Specially for you to take care of you</p>
             <div class="product-container">
-                {% for product in products %}
+                {% for product in category_products %}
                 <a style="text-decoration: none; color:#222;" href="{% url 'product' product.id%}">
                 <div class="product">
                     <img src="{{product.image.url}}" alt="product">
@@ -35,13 +35,13 @@
                 </a>
                 {% endfor %}
             </div>
-            {% if products.has_other_pages%}
+            {% if category_products_page.has_other_pages%}
             <div class="paginate">
-                {% if products.has_previous%}
-                <a href="?page={{products.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
+                {% if category_products_page.has_previous%}
+                <a href="?category={{category}}?page={{category_products_page.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
                 {%endif%}
-                {% if products.has_next%}
-                <a href="?page={{products.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
+                {% if category_products_page.has_next%}
+                <a href="?category={{category}}?page={{category_products_page.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
                 {%endif%}
             </div>
             {%endif%}
