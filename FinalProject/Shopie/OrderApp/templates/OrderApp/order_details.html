@@ -1,0 +1,50 @@
+{% extends "UserApp/base.html" %}
+{% load static%}
+{% block hero %}
+    <section id="hero-cart">
+        {% if order.state == 'Recieved' %}
+            <h1 style="margin-left:40px;">We Hope You're happy with your order !</h1>
+        {% else%}
+            <h1 style="margin-left:40px;">Please be patient your order will reach you soon!</h1>
+        {% endif %}
+    </section>
+{% endblock %}
+{% block content %}
+        <div class="cart-container">
+            <div class="cart-content">
+                <h2 class="cart-title">Your Order Details</h2>
+                    <table class="cart-table">
+                    <thead>
+                        <tr>
+                        <td>Product</td>
+                        <td>Quantity</td>
+                        <td>Price Per Item</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in order.order_products.all %}
+                        <tr class="cart-item">
+                        <td>{{ product.product.name }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.product.price }}$</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total Price</td>
+                            <td>{{ total }}$</td>
+                        </tr>
+                    </tfoot>
+                    </table>
+                    <div class="order-details">
+                        <h3 class="cart-action-title">Order Details</h3>
+                        <p><strong>Order ID: {{order.id}}<strong></p>
+                        <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+                        <p><strong>Order Status:</strong> {{ order.state }}</p>
+                        <p><strong>Order Delivery Destination:</strong> {{ order.delivery_destination }}</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

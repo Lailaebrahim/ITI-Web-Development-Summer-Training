@@ -13,9 +13,10 @@
             <p>Made Specially for you to take care of you</p>
             <div class="product-container">
                 {% for product in category_products %}
-                <a style="text-decoration: none; color:#222;" href="{% url 'product' product.id%}">
                 <div class="product">
-                    <img src="{{product.image.url}}" alt="product">
+                    <a style="text-decoration: none; color:#222;" href="{% url 'product' product.id%}">
+                        <img src="{{product.image.url}}" alt="product">
+                    </a>
                     <div class="product-description">
                         <span>{{product.category}}</span>
                         <h3>{{product.name}}</h3>
@@ -23,16 +24,15 @@
                         <p>{{product.description}}</p>
                         {% if product.quantityInStock > 0 %}
                             {% if user.is_authenticated %}
-                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="{% url 'cart'%}?product={{product.id}}"><i class="fa-solid fa-cart-shopping"></i></a>
                             {%else%}
                             <a href="{% url 'login' %}"><i class="fa-solid fa-cart-shopping"></i></a>
                             {%endif%}
                         {% else %}
-                        <h4 style="color:red;">Out Of Stock</h4>
+                        <h4 style="color:red; margin-top:40px;">Out Of Stock</h4>
                         {% endif %}
                     </div>
                 </div>
-                </a>
                 {% endfor %}
             </div>
             {% if category_products_page.has_other_pages%}

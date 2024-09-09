@@ -131,7 +131,7 @@ body {
     color: #666666;
 }
 
-#hero-Products{
+#hero-Products {
     padding: 0px 80px;
     background-image: url('imgs/hero.jpg');
     height: 80vh;
@@ -213,7 +213,6 @@ body {
     padding: 10px 12px;
     border: 1px solid #e2e1e1;
     border-radius: 20px;
-    cursor: pointer;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.06);
     transition: 0.3s ease;
     margin: 15px 15px;
@@ -333,13 +332,14 @@ footer .social-icons .a {
     margin-right: 30px;
 }
 
-.paginate{
+.paginate {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
-.paginate i{
+
+.paginate i {
     font-size: 20px;
     color: #222;
     cursor: pointer;
@@ -600,11 +600,106 @@ main {
     text-align: center;
 }
 
-.box button{
+.box button {
     background-color: rgb(197, 0, 0);
     margin: 20px 20px;
 }
 
-.box h3{
+.box h3 {
     color: rgb(197, 0, 0);
+}
+
+
+.cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 60%;
+}
+
+.cart-content {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+.cart-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+.cart-table caption {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cart-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f9f9f9;
+}
+
+.cart-action-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.cart-action-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.cart-empty-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.cart-empty-message {
+    margin-bottom: 1.5rem;
+}
+
+.cart-empty-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#hero-cart {
+    background-image: url('imgs/hero_cart.jpg');
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 57% right 0%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.125);
 }

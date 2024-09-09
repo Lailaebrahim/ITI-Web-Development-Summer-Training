@@ -1,0 +1,55 @@
+{% extends "UserApp/base.html" %}
+{% load static%}
+{% block hero %}
+    <section id="hero-cart">
+        <h1 style="margin-left:40px;">Your needs shall be your cart !</h1>
+        <p style="margin-left:40px;">Save more with promocodes & up to 70% off !</p>
+    </section>
+{% endblock %}
+{% block content %}
+        <div class="cart-container">
+            <div class="cart-content">
+                <h2 class="cart-title">Your Cart</h2>
+                {% if cart.cart_products.all %}
+                    <table class="cart-table">
+                    <caption> Items in Your cart</caption>
+                    <thead>
+                        <tr>
+                        <td>Product</td>
+                        <td>Quantity</td>
+                        <td>Price Per Item</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in cart.cart_products.all %}
+                        <tr class="cart-item" id="{{product.product.id}}">
+                        <td>{{ product.product.name }}</td>
+                        <td>
+                            <button class="quantity-minus" style="padding:5px; margin-right:20px;" check-quantity-url={% url 'minusCheckQuantity'%} product-id={{product.product.id}} cart-id={{cart.id}}> - </button>
+                            <span class="quantity">{{ product.quantity }}</span>
+                            <button class="quantity-plus" style="padding:5px; margin-left:20px;" check-quantity-url={% url 'checkQuantity'%} product-id={{product.product.id}} cart-id={{cart.id}}> + </button>
+                        </td>
+                        <td>{{ product.product.price }}$</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                    <h3 class="cart-action-title">Ready To Place The Order?</h3>
+                    <a href="{% url 'order'%}?cart={{cart.id}}" class="cart-action-button">
+                    <button class="button-50" role="button">Order</button>
+                    </a>
+                    <h3 style="margin-top: 20px;">Or continue shopping &nbsp&nbsp&nbsp<a href="{% url 'products'%}"><i class="fa fa-angle-right" ></i></a></h3>
+                {% else %}
+                    <h3 class="cart-empty-title">Your Cart is Empty</h3>
+                    <h4 class="cart-empty-message">Add items to you cart to order now!</h4>
+                    <a href="{% url 'products'%}" class="cart-empty-button">
+                    <button class="button-50" role="button">Shop Now</button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js%}
+    <script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

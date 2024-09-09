@@ -15,7 +15,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', default='products/default_product.png')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    quantityInStock = models.IntegerField(default=1)
+    quantityInStock = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return self.name

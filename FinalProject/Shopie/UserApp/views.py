@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -32,7 +32,8 @@ class UserAccountView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['shopieuser'] = ShopieUser.objects.get(user=self.object.id)
+        context['shopieuser'] = get_object_or_404(
+            ShopieUser, user=self.object.id)
         return context
 
 

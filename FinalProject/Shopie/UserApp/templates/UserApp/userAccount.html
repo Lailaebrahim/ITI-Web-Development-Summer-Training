@@ -42,7 +42,7 @@
                                 <p><strong>Order Date:</strong> {{ order.created_at }}</p>
                                 <p><strong>Order Status:</strong> {{ order.state }}</p>
                                 <p><strong>Order Delivery Destination:</strong> {{ order.delivery_destination }}</p>
-                                <a href="" >Details....</a>
+                                <a href="{% url 'order_details' order.id%}" >Details....</a>
                             </td>
                         </tr>
                         {% endfor %}

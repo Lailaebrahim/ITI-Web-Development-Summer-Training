@@ -14,7 +14,7 @@
                     </form>
                     </li>
                     <li><a href="{% url 'userAccount' user.id %}"><i class="fa-solid fa-user"></i></a>
-                    <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a><li>
+                    <li><a href="{% url 'cart' %}"><i class="fa-solid fa-bag-shopping"></i></a><li>
                     {%else%}
                     <li><a href="{% url 'signup'%}">Sign up</a></li>
                     <li><a href="{% url 'login' %}">Log in</a></li>
